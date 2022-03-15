@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_microsoft_todo_clone/data/data.dart';
 import 'package:flutter_microsoft_todo_clone/layouts/main_layout.dart';
+import 'package:flutter_microsoft_todo_clone/widgets/task_list.dart';
 
 import '../widgets/app_header.dart';
 
@@ -18,12 +20,12 @@ class MyDay extends StatelessWidget {
       ),
       child: MainLayout(
           child: Column(
-        children: [
+        children: const [
           AppHeader(
             title: 'My Day',
             isMyDay: true,
           ),
-          // TaskList()
+          TaskList(todos: todoData)
         ],
       )),
     ));
