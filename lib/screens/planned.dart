@@ -3,8 +3,8 @@ import 'package:flutter_microsoft_todo_clone/layouts/main_plan_layout.dart';
 import 'package:flutter_microsoft_todo_clone/data/data.dart';
 import 'package:flutter_microsoft_todo_clone/utils/palette.dart';
 
-class ImportantScreen extends StatelessWidget {
-  const ImportantScreen({Key? key}) : super(key: key);
+class PlannedScreen extends StatelessWidget {
+  const PlannedScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,11 +12,12 @@ class ImportantScreen extends StatelessWidget {
       backgroundColor: Color.fromARGB(221, 41, 41, 41),
       body: MainPlanLayout(
           data: todoData,
-          color: Palette.imp,
+          isPlanned: true,
+          color: Palette.planned,
           headerIcon: Icon(
-            Icons.star_border_outlined,
+            Icons.add_chart_rounded,
             size: 33,
-            color: Palette.imp,
+            color: Palette.planned,
           )),
     );
   }

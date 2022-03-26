@@ -7,13 +7,18 @@ import 'package:flutter_microsoft_todo_clone/utils/palette.dart';
 class TaskList extends StatelessWidget {
   final List<ToDo> todos;
   final bool isMain;
-  const TaskList({Key? key, required this.todos, this.isMain = false})
+  final bool isPlanned;
+  const TaskList(
+      {Key? key,
+      required this.todos,
+      this.isMain = false,
+      this.isPlanned = false})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.width * 1.25,
+    return SizedBox(
+      height: MediaQuery.of(context).size.width * 1.20,
       child: ListView.builder(
         scrollDirection: Axis.vertical,
         itemCount: todos.length,
@@ -60,11 +65,47 @@ class TaskList extends StatelessWidget {
                                     fontSize: 17.5),
                               ),
                             ),
-                            Text(
-                              todo.category,
-                              style: const TextStyle(
-                                  color: Colors.white, fontSize: 15.5),
-                            )
+                            Row(
+                              children: [
+                                Text(
+                                  todo.category,
+                                  style: const TextStyle(
+                                      color: Colors.white, fontSize: 15.5),
+                                ),
+                                isPlanned
+                                    ? Row(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 10.0),
+                                            child: Container(
+                                              height: 4,
+                                              width: 4,
+                                              decoration: const BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  color: Color.fromARGB(
+                                                      255, 0, 0, 0)),
+                                            ),
+                                          ),
+                                          const Padding(
+                                            padding:
+                                                EdgeInsets.only(right: 6.0),
+                                            child: Icon(Icons.calendar_month,
+                                                size: 15,
+                                                color: Palette.planned),
+                                          ),
+                                          const Text(
+                                            'Today',
+                                            style: TextStyle(
+                                                color: Palette.planned,
+                                                fontSize: 15.5,
+                                                fontWeight: FontWeight.w300),
+                                          )
+                                        ],
+                                      )
+                                    : const SizedBox.shrink()
+                              ],
+                            ),
                           ],
                         )
                       ],

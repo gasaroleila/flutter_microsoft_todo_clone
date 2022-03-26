@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_microsoft_todo_clone/utils/palette.dart';
 
 class AddTask extends StatelessWidget {
-  const AddTask({Key? key}) : super(key: key);
+  final Color color;
+  const AddTask({Key? key, this.color = Colors.white}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class AddTask extends StatelessWidget {
         hintStyle: const TextStyle(
             color: Colors.white, fontSize: 18, fontWeight: FontWeight.w400),
         filled: true,
-        fillColor: Palette.mainBlack,
+        fillColor: Palette.secBlack,
       ),
     );
   }

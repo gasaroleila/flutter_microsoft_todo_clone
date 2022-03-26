@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_microsoft_todo_clone/screens/important.dart';
 import 'package:flutter_microsoft_todo_clone/screens/my_day.dart';
+import 'package:flutter_microsoft_todo_clone/screens/planned.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ImportantScreen(),
+      home: const PlannedScreen(),
     );
   }
 }

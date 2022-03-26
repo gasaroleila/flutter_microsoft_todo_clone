@@ -14,7 +14,8 @@ class AppHeader extends StatelessWidget {
       this.color = Colors.white,
       this.icon = const Icon(Icons.lightbulb, size: 25, color: Colors.white),
       required this.title,
-      this.date = 'Monday, March 14'})
+      this.date = 'Monday, March 14',
+      })
       : super(key: key);
 
   @override
