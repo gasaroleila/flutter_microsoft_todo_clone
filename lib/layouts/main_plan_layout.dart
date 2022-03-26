@@ -26,9 +26,9 @@ class MainPlanLayout extends StatelessWidget {
           children: [
             Container(
               alignment: Alignment.centerLeft,
-              child: const Padding(
-                padding: EdgeInsets.symmetric(vertical: 8.0),
-                child: Icon(Icons.menu, color: Colors.white, size: 32),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Icon(Icons.menu, color: color, size: 32),
               ),
             ),
             Column(

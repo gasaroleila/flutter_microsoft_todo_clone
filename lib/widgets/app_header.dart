@@ -8,15 +8,14 @@ class AppHeader extends StatelessWidget {
   final Color color;
   final Icon icon;
 
-  const AppHeader(
-      {Key? key,
-      this.isMyDay = false,
-      this.color = Colors.white,
-      this.icon = const Icon(Icons.lightbulb, size: 25, color: Colors.white),
-      required this.title,
-      this.date = 'Monday, March 14',
-      })
-      : super(key: key);
+  const AppHeader({
+    Key? key,
+    this.isMyDay = false,
+    this.color = Colors.white,
+    this.icon = const Icon(Icons.lightbulb, size: 25, color: Colors.white),
+    required this.title,
+    this.date = 'Monday, March 14',
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -79,10 +78,10 @@ class AppHeader extends StatelessWidget {
                       child: icon,
                     ),
                   ),
-                  Icon(Icons.more_horiz, size: 24, color: color)
+                  const Icon(Icons.more_horiz, size: 24, color: Colors.white)
                 ],
               )
-            : Icon(Icons.more_horiz, size: 28, color: color)
+            : const Icon(Icons.more_horiz, size: 28, color: Colors.white)
       ],
     );
   }

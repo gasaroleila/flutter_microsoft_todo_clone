@@ -7,4 +7,5 @@ class Palette {
   static const Color bgSecondary = Color.fromRGBO(237, 241, 255, 1);
   static const Color imp = Color.fromRGBO(244, 143, 177, 1);
   static const Color planned = Color.fromRGBO(88, 226, 206, 1);
+  static const Color assigned = Color.fromRGBO(151, 239, 187, 1);
 }
