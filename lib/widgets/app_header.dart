@@ -12,7 +12,7 @@ class AppHeader extends StatelessWidget {
     Key? key,
     this.isMyDay = false,
     this.color = Colors.white,
-    this.icon = const Icon(Icons.lightbulb, size: 25, color: Colors.white),
+    this.icon = const Icon(Icons.house_rounded, size: 30, color: Colors.white),
     required this.title,
     this.date = 'Monday, March 14',
   }) : super(key: key);
@@ -75,7 +75,8 @@ class AppHeader extends StatelessWidget {
                             ),
                           ],
                           borderRadius: BorderRadius.circular(4)),
-                      child: icon,
+                      child: const Icon(Icons.lightbulb,
+                          size: 25, color: Colors.white),
                     ),
                   ),
                   const Icon(Icons.more_horiz, size: 24, color: Colors.white)

@@ -9,19 +9,18 @@ class AddTask extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-        prefixIcon: const Icon(
-          Icons.add,
-          color: Colors.white,
-          size: 25,
-        ),
-        prefixIconColor: Colors.white,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
-        hintText: 'Add a task',
-        hintStyle: const TextStyle(
-            color: Colors.white, fontSize: 18, fontWeight: FontWeight.w400),
-        filled: true,
-        fillColor: Palette.secBlack,
-      ),
+          prefixIcon: const Icon(
+            Icons.add,
+            color: Colors.white,
+            size: 25,
+          ),
+          prefixIconColor: Colors.white,
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
+          hintText: 'Add a task',
+          hintStyle: const TextStyle(
+              color: Colors.white, fontSize: 18, fontWeight: FontWeight.w400),
+          filled: true,
+          fillColor: Palette.mainBlack),
     );
   }
 }

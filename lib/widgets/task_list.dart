@@ -18,7 +18,7 @@ class TaskList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.width * 1.20,
+      height: MediaQuery.of(context).size.width * 1.30,
       child: ListView.builder(
         scrollDirection: Axis.vertical,
         itemCount: todos.length,

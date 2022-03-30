@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_microsoft_todo_clone/data/data.dart';
 import 'package:flutter_microsoft_todo_clone/layouts/main_list_layout.dart';
 
-class MyDayScreen extends StatelessWidget {
-  const MyDayScreen({Key? key}) : super(key: key);
+class TasksScreen extends StatelessWidget {
+  const TasksScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +15,7 @@ class MyDayScreen extends StatelessWidget {
                 'assets/images/shifaaz-shamoon-okVXy9tG3KY-unsplash.jpg'),
             fit: BoxFit.cover),
       ),
-      child: const MainListLayout(
-        data: todoData,
-        title: 'My Day',
-        isMyDay: true,
-      ),
+      child: const MainListLayout(data: todoData, title: 'Tasks'),
     ));
   }
 }
