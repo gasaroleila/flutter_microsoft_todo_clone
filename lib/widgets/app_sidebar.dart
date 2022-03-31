@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_microsoft_todo_clone/widgets/app_menu.dart';
+
+import '../utils/palette.dart';
 
 class AppSideBar extends StatelessWidget {
   const AppSideBar({Key? key}) : super(key: key);
@@ -58,8 +61,8 @@ class AppSideBar extends StatelessWidget {
             ),
           ),
           Container(
-            height: 80,
-            padding: const EdgeInsets.symmetric(vertical: 17),
+            height: 60,
+            padding: const EdgeInsets.fromLTRB(0, 17, 20, 0),
             child: TextField(
               decoration: InputDecoration(
                   suffixIcon: const Icon(
@@ -69,7 +72,7 @@ class AppSideBar extends StatelessWidget {
                   ),
                   suffixIconColor: Colors.white,
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(6)),
+                      borderRadius: BorderRadius.circular(5)),
                   hintText: 'Search',
                   hintStyle: const TextStyle(
                     color: Colors.white,
@@ -87,7 +90,8 @@ class AppSideBar extends StatelessWidget {
             ),
           ),
 
-          _AppMenu()
+          // _AppMenu()
+          // const AppMenu()
         ],
       ),
     );
