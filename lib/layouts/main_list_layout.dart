@@ -56,10 +56,11 @@ class MainListLayout extends StatelessWidget {
               ],
             )),
         Container(
-          height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width * 0.85,
           color: Colors.black,
-          child: const AppSideBar(),
+          child: ListView(
+            children: const [AppSideBar()],
+          ),
         )
       ],
     );

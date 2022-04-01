@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_microsoft_todo_clone/data/data.dart';
 import 'package:flutter_microsoft_todo_clone/widgets/app_menu.dart';
 
 import '../utils/palette.dart';
@@ -10,17 +11,20 @@ class AppSideBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
-      padding: const EdgeInsets.fromLTRB(16, 30, 0, 0),
+      padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          IconButton(
-            alignment: Alignment.topLeft,
-            icon: const Icon(Icons.menu, color: Colors.white, size: 32),
-            onPressed: () => {},
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: IconButton(
+              alignment: Alignment.topLeft,
+              icon: const Icon(Icons.menu, color: Colors.white, size: 32),
+              onPressed: () => {},
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 10.0),
+            padding: const EdgeInsets.fromLTRB(16, 10.0, 0, 0),
             child: Row(
               children: [
                 Padding(
@@ -62,7 +66,7 @@ class AppSideBar extends StatelessWidget {
           ),
           Container(
             height: 60,
-            padding: const EdgeInsets.fromLTRB(0, 17, 20, 0),
+            padding: const EdgeInsets.fromLTRB(16, 17, 20, 0),
             child: TextField(
               decoration: InputDecoration(
                   suffixIcon: const Icon(
@@ -89,9 +93,55 @@ class AppSideBar extends StatelessWidget {
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 18)),
             ),
           ),
-
-          // _AppMenu()
-          // const AppMenu()
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: AppMenu(
+              items: menuItems,
+              height: MediaQuery.of(context).size.width * 0.8,
+            ),
+          ),
+          Container(
+            height: 1.15,
+            decoration: const BoxDecoration(color: Colors.grey),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: AppMenu(
+              items: menuList,
+              height: MediaQuery.of(context).size.width * 0.65,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flex(
+                  direction: Axis.horizontal,
+                  children: const [
+                    Padding(
+                      padding: EdgeInsets.only(right: 18.0),
+                      child: Icon(
+                        Icons.add,
+                        size: 35,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      'New list',
+                      style: TextStyle(color: Colors.white, fontSize: 21),
+                    )
+                  ],
+                ),
+                const Icon(
+                  Icons.add_box_outlined,
+                  size: 32,
+                  color: Colors.white,
+                )
+              ],
+            ),
+          )
         ],
       ),
     );
