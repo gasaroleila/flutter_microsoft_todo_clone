@@ -4,11 +4,12 @@ import 'package:flutter_microsoft_todo_clone/utils/palette.dart';
 import 'package:flutter_microsoft_todo_clone/widgets/app_sidebar.dart';
 import 'package:flutter_microsoft_todo_clone/widgets/widgets.dart';
 
-class MainListLayout extends StatelessWidget {
+class MainListLayout extends StatefulWidget {
   final List<ToDo> data;
   final String title;
   final bool isMyDay;
   final Icon headerIcon;
+
   const MainListLayout(
       {Key? key,
       required this.data,
@@ -18,6 +19,11 @@ class MainListLayout extends StatelessWidget {
           const Icon(Icons.lightbulb, size: 25, color: Colors.white)})
       : super(key: key);
 
+  @override
+  _MainListLayoutState createState() => _MainListLayoutState();
+}
+
+class _MainListLayoutState extends State<MainListLayout> {
   @override
   Widget build(BuildContext context) {
     double statusBar = MediaQuery.of(context).padding.top;
@@ -43,11 +49,11 @@ class MainListLayout extends StatelessWidget {
                 Column(
                   children: [
                     AppHeader(
-                      title: title,
-                      isMyDay: isMyDay,
+                      title: widget.title,
+                      isMyDay: widget.isMyDay,
                     ),
                     TaskList(
-                      todos: data,
+                      todos: widget.data,
                       isMain: true,
                     ),
                     const AddTask()
