@@ -24,6 +24,7 @@ class MainListLayout extends StatefulWidget {
 }
 
 class _MainListLayoutState extends State<MainListLayout> {
+  bool showSideBar = false;
   @override
   Widget build(BuildContext context) {
     double statusBar = MediaQuery.of(context).padding.top;
@@ -42,7 +43,11 @@ class _MainListLayoutState extends State<MainListLayout> {
                       alignment: Alignment.topLeft,
                       icon:
                           const Icon(Icons.menu, color: Colors.white, size: 32),
-                      onPressed: () => {},
+                      onPressed: () => {
+                        setState(() {
+                          showSideBar = !showSideBar;
+                        })
+                      },
                     ),
                   ),
                 ),
@@ -61,13 +66,15 @@ class _MainListLayoutState extends State<MainListLayout> {
                 ),
               ],
             )),
-        Container(
-          width: MediaQuery.of(context).size.width * 0.85,
-          color: Colors.black,
-          child: ListView(
-            children: const [AppSideBar()],
-          ),
-        )
+        showSideBar
+            ? Container(
+                width: MediaQuery.of(context).size.width * 0.85,
+                color: Colors.black,
+                child: ListView(
+                  children: const [AppSideBar()],
+                ),
+              )
+            : const SizedBox.shrink()
       ],
     );
   }
