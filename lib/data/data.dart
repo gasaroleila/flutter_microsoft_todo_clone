@@ -5,15 +5,15 @@ import 'package:flutter/material.dart';
 
 const List<ToDo> todoData = [
   ToDo(
-    title: 'Physics notes',
+    title: 'Learn Get X',
     category: 'Tasks',
   ),
   ToDo(
-    title: 'Physics notes',
+    title: 'Read more about VueRouter',
     category: 'Tasks',
   ),
   ToDo(
-    title: 'Physics notes',
+    title: 'Read a book',
     category: 'Tasks',
   )
 ];
