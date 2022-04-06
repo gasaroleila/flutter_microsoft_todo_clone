@@ -33,7 +33,7 @@ class _MainListLayoutState extends State<MainListLayout> {
       return Stack(
         children: [
           Container(
-              padding: EdgeInsets.fromLTRB(24, statusBar + 12, 20, 0),
+              padding: EdgeInsets.fromLTRB(22.5, statusBar + 12, 22, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

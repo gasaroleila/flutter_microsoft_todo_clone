@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           '/important': (context) => const ImportantScreen(),
           '/planned': (context) => const PlannedScreen(),
           '/assigned': (context) => const AssignedScreen(),
-          'tasks': (context) => const TasksScreen()
+          '/tasks': (context) => const TasksScreen()
         },
       ),
     );
