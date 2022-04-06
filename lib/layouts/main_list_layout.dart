@@ -3,6 +3,7 @@ import 'package:flutter_microsoft_todo_clone/models/models.dart';
 import 'package:flutter_microsoft_todo_clone/utils/palette.dart';
 import 'package:flutter_microsoft_todo_clone/widgets/app_sidebar.dart';
 import 'package:flutter_microsoft_todo_clone/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 
 class MainListLayout extends StatefulWidget {
   final List<ToDo> data;
@@ -28,54 +29,52 @@ class _MainListLayoutState extends State<MainListLayout> {
   @override
   Widget build(BuildContext context) {
     double statusBar = MediaQuery.of(context).padding.top;
-    return Stack(
-      children: [
-        Container(
-            padding: EdgeInsets.fromLTRB(24, statusBar + 12, 20, 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Container(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: IconButton(
-                      alignment: Alignment.topLeft,
-                      icon:
-                          const Icon(Icons.menu, color: Colors.white, size: 32),
-                      onPressed: () => {
-                        setState(() {
-                          showSideBar = !showSideBar;
-                        })
-                      },
+    return Consumer<SideBar>(builder: (context, data, _) {
+      return Stack(
+        children: [
+          Container(
+              padding: EdgeInsets.fromLTRB(24, statusBar + 12, 20, 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: IconButton(
+                        alignment: Alignment.centerLeft,
+                        icon: const Icon(Icons.menu,
+                            color: Colors.white, size: 32),
+                        onPressed: () => {data.changeSideBarDisplay()},
+                      ),
                     ),
                   ),
-                ),
-                Column(
-                  children: [
-                    AppHeader(
-                      title: widget.title,
-                      isMyDay: widget.isMyDay,
-                    ),
-                    TaskList(
-                      todos: widget.data,
-                      isMain: true,
-                    ),
-                    const AddTask()
-                  ],
-                ),
-              ],
-            )),
-        showSideBar
-            ? Container(
-                width: MediaQuery.of(context).size.width * 0.85,
-                color: Colors.black,
-                child: ListView(
-                  children: const [AppSideBar()],
-                ),
-              )
-            : const SizedBox.shrink()
-      ],
-    );
+                  Column(
+                    children: [
+                      AppHeader(
+                        title: widget.title,
+                        isMyDay: widget.isMyDay,
+                      ),
+                      TaskList(
+                        todos: widget.data,
+                        isMain: true,
+                      ),
+                      const AddTask()
+                    ],
+                  ),
+                ],
+              )),
+          data.show
+              ? Container(
+                  width: MediaQuery.of(context).size.width * 0.85,
+                  color: Colors.black,
+                  child: ListView(
+                    children: const [AppSideBar()],
+                  ),
+                )
+              : const SizedBox.shrink()
+        ],
+      );
+    });
   }
 }
