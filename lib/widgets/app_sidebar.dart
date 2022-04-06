@@ -14,7 +14,7 @@ class AppSideBar extends StatelessWidget {
     return Consumer<SideBar>(builder: (context, data, _) {
       return Container(
         alignment: Alignment.centerLeft,
-        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+        padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
