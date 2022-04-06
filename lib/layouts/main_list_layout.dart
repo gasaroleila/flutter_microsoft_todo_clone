@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_microsoft_todo_clone/models/models.dart';
 import 'package:flutter_microsoft_todo_clone/utils/palette.dart';
 import 'package:flutter_microsoft_todo_clone/widgets/app_sidebar.dart';
+import 'package:flutter_microsoft_todo_clone/widgets/app_suggestion_overlay.dart';
 import 'package:flutter_microsoft_todo_clone/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
@@ -71,6 +72,15 @@ class _MainListLayoutState extends State<MainListLayout> {
                   color: Colors.black,
                   child: ListView(
                     children: const [AppSideBar()],
+                  ),
+                )
+              : const SizedBox.shrink(),
+          data.show
+              ? Container(
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.black,
+                  child: ListView(
+                    children: const [AppSuggestionOverlay()],
                   ),
                 )
               : const SizedBox.shrink()
