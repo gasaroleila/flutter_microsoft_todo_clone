@@ -26,7 +26,14 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const TasksScreen(),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const MyDayScreen(),
+          '/important': (context) => const ImportantScreen(),
+          '/planned': (context) => const PlannedScreen(),
+          '/assigned': (context) => const AssignedScreen(),
+          'tasks': (context) => const TasksScreen()
+        },
       ),
     );
   }
