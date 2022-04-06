@@ -75,15 +75,15 @@ class _MainListLayoutState extends State<MainListLayout> {
                   ),
                 )
               : const SizedBox.shrink(),
-          data.show
-              ? Container(
-                  width: MediaQuery.of(context).size.width,
-                  color: Colors.black,
-                  child: ListView(
-                    children: const [AppSuggestionOverlay()],
-                  ),
-                )
-              : const SizedBox.shrink()
+          // data.show
+          //     ? Container(
+          //         width: MediaQuery.of(context).size.width,
+          //         color: Colors.black,
+          //         child: ListView(
+          //           children: const [AppSuggestionOverlay()],
+          //         ),
+          //       )
+          //     : const SizedBox.shrink()
         ],
       );
     });
