@@ -43,6 +43,7 @@ class _MainListLayoutState extends State<MainListLayout> {
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: IconButton(
                         alignment: Alignment.centerLeft,
+                        padding: EdgeInsets.zero,
                         icon: const Icon(Icons.menu,
                             color: Colors.white, size: 32),
                         onPressed: () => {data.changeSideBarDisplay()},

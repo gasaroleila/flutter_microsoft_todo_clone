@@ -31,6 +31,8 @@ class PageWithHeaderLayout extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: IconButton(
+                      alignment: Alignment.centerLeft,
+                      padding: EdgeInsets.zero,
                       onPressed: () => {data.changeSideBarDisplay()},
                       icon: Icon(Icons.menu, color: color, size: 32)),
                 ),
