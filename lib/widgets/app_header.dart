@@ -21,7 +21,7 @@ class AppHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<SuggestionOverlay>(
+    return Consumer<SuggestionOverlay?>(
       builder: (context, suggestionOverlayProvider, _) {
         return Padding(
           padding: const EdgeInsets.only(bottom: 6.0),
@@ -84,8 +84,8 @@ class AppHeader extends StatelessWidget {
                             child: IconButton(
                               onPressed: () => {
                                 suggestionOverlayProvider
-                                    .changeSuggestionOverlayDisplay(),
-                                print(suggestionOverlayProvider.show)
+                                    ?.changeSuggestionOverlayDisplay(),
+                                print(suggestionOverlayProvider?.show)
                               },
                               icon: const Icon(Icons.lightbulb,
                                   size: 25, color: Colors.white),

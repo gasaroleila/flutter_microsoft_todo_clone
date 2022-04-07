@@ -31,12 +31,8 @@ class _MainListLayoutState extends State<MainListLayout> {
   Widget build(BuildContext context) {
     double statusBar = MediaQuery.of(context).padding.top;
 
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<SideBar>(create: (context) => SideBar()),
-        ChangeNotifierProvider<SuggestionOverlay>(
-            create: (context) => SuggestionOverlay())
-      ],
+    return ChangeNotifierProvider<SuggestionOverlay>(
+      create: ((context) => SuggestionOverlay()),
       child: Consumer2<SideBar, SuggestionOverlay>(
           builder: (context, sideBarProvider, suggestionOverlayProvider, _) {
         return Stack(
