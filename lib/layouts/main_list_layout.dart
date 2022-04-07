@@ -30,7 +30,8 @@ class _MainListLayoutState extends State<MainListLayout> {
   @override
   Widget build(BuildContext context) {
     double statusBar = MediaQuery.of(context).padding.top;
-    return Consumer<SideBar>(builder: (context, data, _) {
+    return Consumer2<SideBar, SuggestionOverlay>(
+        builder: (context, sideBarProvider, suggestionOverlayProvider, _) {
       return Stack(
         children: [
           Container(
@@ -47,7 +48,8 @@ class _MainListLayoutState extends State<MainListLayout> {
                         padding: EdgeInsets.zero,
                         icon: const Icon(Icons.menu,
                             color: Colors.white, size: 32),
-                        onPressed: () => {data.changeSideBarDisplay()},
+                        onPressed: () =>
+                            {sideBarProvider.changeSideBarDisplay()},
                       ),
                     ),
                   ),
@@ -66,7 +68,7 @@ class _MainListLayoutState extends State<MainListLayout> {
                   ),
                 ],
               )),
-          data.show
+          sideBarProvider.show
               ? Container(
                   width: MediaQuery.of(context).size.width * 0.85,
                   color: Colors.black,
@@ -75,15 +77,15 @@ class _MainListLayoutState extends State<MainListLayout> {
                   ),
                 )
               : const SizedBox.shrink(),
-          // data.show
-          //     ? Container(
-          //         width: MediaQuery.of(context).size.width,
-          //         color: Colors.black,
-          //         child: ListView(
-          //           children: const [AppSuggestionOverlay()],
-          //         ),
-          //       )
-          //     : const SizedBox.shrink()
+          suggestionOverlayProvider.show
+              ? Container(
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.black,
+                  child: ListView(
+                    children: const [AppSuggestionOverlay()],
+                  ),
+                )
+              : const SizedBox.shrink()
         ],
       );
     });
