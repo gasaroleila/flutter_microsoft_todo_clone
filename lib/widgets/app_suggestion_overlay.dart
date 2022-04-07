@@ -13,90 +13,92 @@ class AppSuggestionOverlay extends StatelessWidget {
     double statusBar = MediaQuery.of(context).padding.top;
     return Consumer<SuggestionOverlay>(
         builder: (context, suggestionOverlayProvider, _) {
-      return Container(
-        padding: EdgeInsets.fromLTRB(22.5, statusBar + 12, 22, 0),
-        child: Column(children: [
-          Flex(
-            direction: Axis.horizontal,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                'Suggestions',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 23,
-                    fontWeight: FontWeight.w500),
-              ),
-              IconButton(
-                icon: const Icon(
-                  Icons.close,
-                  size: 25,
-                  color: Colors.white,
-                ),
-                onPressed: () => {
-                  suggestionOverlayProvider.changeSuggestionOverlayDisplay(),
-                },
-              )
-            ],
-          ),
-          SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
+      return SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.fromLTRB(22.5, statusBar + 12, 22, 0),
+          child: Column(children: [
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 6.0),
-                  child: Flex(
-                    direction: Axis.horizontal,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Yesterday',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18.5,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      IconButton(
-                        icon: const Icon(
-                          Icons.more_horiz,
-                          size: 25,
-                          color: Colors.white,
-                        ),
-                        onPressed: () => {},
-                      )
-                    ],
-                  ),
+                const Text(
+                  'Suggestions',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 23,
+                      fontWeight: FontWeight.w500),
                 ),
-                TaskList(todos: data, isSuggestions: true),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 6.0),
-                  child: Flex(
-                    direction: Axis.horizontal,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Recently Added',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18.5,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      IconButton(
-                        icon: const Icon(
-                          Icons.more_horiz,
-                          size: 25,
-                          color: Colors.white,
-                        ),
-                        onPressed: () => {},
-                      )
-                    ],
+                IconButton(
+                  icon: const Icon(
+                    Icons.close,
+                    size: 25,
+                    color: Colors.white,
                   ),
-                ),
-                TaskList(todos: data, isSuggestions: true)
+                  onPressed: () => {
+                    suggestionOverlayProvider.changeSuggestionOverlayDisplay(),
+                  },
+                )
               ],
             ),
-          ),
-        ]),
+            SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 6.0),
+                    child: Flex(
+                      direction: Axis.horizontal,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          'Yesterday',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18.5,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        IconButton(
+                          icon: const Icon(
+                            Icons.more_horiz,
+                            size: 25,
+                            color: Colors.white,
+                          ),
+                          onPressed: () => {},
+                        )
+                      ],
+                    ),
+                  ),
+                  TaskList(todos: data, isSuggestions: true),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 6.0),
+                    child: Flex(
+                      direction: Axis.horizontal,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          'Recently Added',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18.5,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        IconButton(
+                          icon: const Icon(
+                            Icons.more_horiz,
+                            size: 25,
+                            color: Colors.white,
+                          ),
+                          onPressed: () => {},
+                        )
+                      ],
+                    ),
+                  ),
+                  TaskList(todos: data, isSuggestions: true)
+                ],
+              ),
+            ),
+          ]),
+        ),
       );
     });
   }
