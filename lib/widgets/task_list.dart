@@ -8,18 +8,21 @@ class TaskList extends StatelessWidget {
   final List<ToDo> todos;
   final bool isMain;
   final bool isPlanned;
+  final bool isSuggestions;
   const TaskList(
       {Key? key,
       required this.todos,
       this.isMain = false,
+      this.isSuggestions = false,
       this.isPlanned = false})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.width * 1.30,
+      height: !isSuggestions ? MediaQuery.of(context).size.width * 1.30 : null,
       child: ListView.builder(
+        shrinkWrap: isSuggestions,
         scrollDirection: Axis.vertical,
         itemCount: todos.length,
         itemBuilder: (BuildContext context, index) {
@@ -27,9 +30,14 @@ class TaskList extends StatelessWidget {
           return Expanded(
             child: Container(
               margin: const EdgeInsets.only(bottom: 4),
-              decoration: BoxDecoration(
-                  color: isMain ? Palette.mainBlack : Palette.secBlack,
-                  borderRadius: BorderRadius.circular(6)),
+              decoration: !isSuggestions
+                  ? BoxDecoration(
+                      color: isMain ? Palette.mainBlack : Palette.secBlack,
+                      borderRadius: BorderRadius.circular(6))
+                  : const BoxDecoration(
+                      border: Border(
+                          bottom:
+                              BorderSide(width: 1, color: Palette.secBlack))),
               height: 65,
               child: Padding(
                 padding:
@@ -110,8 +118,10 @@ class TaskList extends StatelessWidget {
                         )
                       ],
                     ),
-                    const Icon(Icons.star_border,
-                        size: 25, color: Colors.white),
+                    Icon(!isSuggestions ? Icons.star_border : Icons.add,
+                        size: 25,
+                        color:
+                            !isSuggestions ? Colors.white : Palette.mainBlue),
                   ],
                 ),
               ),

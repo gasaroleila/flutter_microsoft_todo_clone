@@ -26,7 +26,6 @@ class MainListLayout extends StatefulWidget {
 }
 
 class _MainListLayoutState extends State<MainListLayout> {
-  bool showSideBar = false;
   @override
   Widget build(BuildContext context) {
     double statusBar = MediaQuery.of(context).padding.top;
@@ -85,7 +84,7 @@ class _MainListLayoutState extends State<MainListLayout> {
                     width: MediaQuery.of(context).size.width,
                     color: Colors.black,
                     child: ListView(
-                      children: const [AppSuggestionOverlay()],
+                      children: [AppSuggestionOverlay(data: widget.data)],
                     ),
                   )
                 : const SizedBox.shrink(),
