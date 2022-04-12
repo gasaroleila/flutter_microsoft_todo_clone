@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_microsoft_todo_clone/data/data.dart';
 import 'package:flutter_microsoft_todo_clone/models/models.dart';
+import 'package:flutter_microsoft_todo_clone/services/firestore_methods.dart';
 import 'package:flutter_microsoft_todo_clone/widgets/app_menu.dart';
 import 'package:provider/provider.dart';
 
@@ -9,6 +10,10 @@ import '../utils/palette.dart';
 class AppSideBar extends StatelessWidget {
   const AppSideBar({Key? key}) : super(key: key);
 
+  final ToDo todo = const ToDo(
+    title: 'Test',
+    category: 'Tasks',
+  );
   @override
   Widget build(BuildContext context) {
     return Consumer<SideBar>(builder: (context, data, _) {
@@ -23,7 +28,10 @@ class AppSideBar extends StatelessWidget {
               child: IconButton(
                 alignment: Alignment.topLeft,
                 icon: const Icon(Icons.menu, color: Colors.white, size: 32),
-                onPressed: () => {data.changeSideBarDisplay()},
+                onPressed: () => {
+                  data.changeSideBarDisplay(),
+                  FirestoreMethods().addTodo(todo)
+                },
               ),
             ),
             Padding(
