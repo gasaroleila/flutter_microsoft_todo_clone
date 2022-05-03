@@ -8,7 +8,7 @@ import 'package:flutter_microsoft_todo_clone/screens/my_day.dart';
 import 'package:flutter_microsoft_todo_clone/screens/planned.dart';
 import 'package:flutter_microsoft_todo_clone/screens/assigned.dart';
 import 'package:flutter_microsoft_todo_clone/screens/tasks.dart';
-import 'package:flutter_microsoft_todo_clone/widgets/todo_details.dart';
+import 'package:flutter_microsoft_todo_clone/screens/todo_details.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {

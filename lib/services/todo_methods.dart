@@ -39,6 +39,25 @@ class TodoMethods {
     }
   }
 
+  void addTodoStep(ToDoStep step) async {
+    try {
+      print("there");
+      await _firestore
+          .collection('users')
+          .doc(_auth.currentUser!.uid)
+          .collection('todos')
+          .doc()
+          .collection('steps')
+          .add({
+        'title': step.title,
+        'isCompleted': step.isCompleted,
+        'createdAt': DateTime.now(),
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
   void updateTodo(ToDo todo) async {
     try {
       await _firestore
