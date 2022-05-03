@@ -15,14 +15,6 @@ const List<ToDo> todoData = [
   ToDo(
     title: 'Read a book',
     category: 'Tasks',
-  ),
-  ToDo(
-    title: 'Read more about VueRouter',
-    category: 'Tasks',
-  ),
-  ToDo(
-    title: 'Read a book',
-    category: 'Tasks',
   )
 ];
 

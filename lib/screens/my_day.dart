@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_microsoft_todo_clone/data/data.dart';
 import 'package:flutter_microsoft_todo_clone/layouts/main_list_layout.dart';
+import 'package:flutter_microsoft_todo_clone/services/todo_methods.dart';
 
 class MyDayScreen extends StatelessWidget {
-  const MyDayScreen({Key? key}) : super(key: key);
+
+  final TodoMethods _todoMethods = TodoMethods();
+   MyDayScreen({Key? key}) : super(key: key);
+  
 
   @override
   Widget build(BuildContext context) {

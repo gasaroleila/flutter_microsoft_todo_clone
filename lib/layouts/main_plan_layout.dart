@@ -19,6 +19,8 @@ class MainPlanLayout extends StatelessWidget {
       required this.headerIcon})
       : super(key: key);
 
+// final myController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     double statusBar = MediaQuery.of(context).padding.top;
@@ -95,7 +97,7 @@ class MainPlanLayout extends StatelessWidget {
                       todos: data,
                       isPlanned: isPlanned,
                     ),
-                    const AddTask()
+                      AddTask()
                   ],
                 ),
               ],

@@ -1,15 +1,17 @@
 import 'dart:ffi';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_microsoft_todo_clone/models/todo_model.dart';
 import 'package:flutter_microsoft_todo_clone/utils/palette.dart';
+import 'package:flutter_microsoft_todo_clone/widgets/widgets.dart';
 
 class TaskList extends StatelessWidget {
   final List<ToDo> todos;
   final bool isMain;
   final bool isPlanned;
   final bool isSuggestions;
-  const TaskList(
+  TaskList(
       {Key? key,
       required this.todos,
       this.isMain = false,
@@ -17,118 +19,42 @@ class TaskList extends StatelessWidget {
       this.isPlanned = false})
       : super(key: key);
 
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: !isSuggestions ? MediaQuery.of(context).size.width * 1.30 : null,
-      child: ListView.builder(
-        shrinkWrap: isSuggestions,
-        scrollDirection: Axis.vertical,
-        itemCount: todos.length,
-        itemBuilder: (BuildContext context, index) {
-          final ToDo todo = todos[index];
-          return Expanded(
-            child: Container(
-              margin: const EdgeInsets.only(bottom: 4),
-              decoration: !isSuggestions
-                  ? BoxDecoration(
-                      color: isMain ? Palette.mainBlack : Palette.secBlack,
-                      borderRadius: BorderRadius.circular(6))
-                  : const BoxDecoration(
-                      border: Border(
-                          bottom:
-                              BorderSide(width: 1, color: Palette.secBlack))),
-              height: 65,
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 11, horizontal: 10),
-                child: Flex(
-                  direction: Axis.horizontal,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 14),
-                          child: Container(
-                            width: 22,
-                            height: 22,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(100),
-                                border: Border.all(
-                                    width: 2.5, color: Colors.white)),
-                          ),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 3),
-                              child: Text(
-                                todo.title,
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 17.5),
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  todo.category,
-                                  style: const TextStyle(
-                                      color: Colors.white, fontSize: 15.5),
-                                ),
-                                isPlanned
-                                    ? Row(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 10.0),
-                                            child: Container(
-                                              height: 4,
-                                              width: 4,
-                                              decoration: const BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color: Color.fromARGB(
-                                                      255, 0, 0, 0)),
-                                            ),
-                                          ),
-                                          const Padding(
-                                            padding:
-                                                EdgeInsets.only(right: 6.0),
-                                            child: Icon(Icons.calendar_month,
-                                                size: 15,
-                                                color: Palette.planned),
-                                          ),
-                                          const Text(
-                                            'Today',
-                                            style: TextStyle(
-                                                color: Palette.planned,
-                                                fontSize: 15.5,
-                                                fontWeight: FontWeight.w300),
-                                          )
-                                        ],
-                                      )
-                                    : const SizedBox.shrink()
-                              ],
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    Icon(!isSuggestions ? Icons.star_border : Icons.add,
-                        size: 25,
-                        color:
-                            !isSuggestions ? Colors.white : Palette.mainBlue),
-                  ],
-                ),
-              ),
-            ),
-          );
-        },
-      ),
-    );
+        height:
+            !isSuggestions ? MediaQuery.of(context).size.width * 1.30 : null,
+        child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+            stream: _firestore
+                .collection('users')
+                .doc(_auth.currentUser!.uid)
+                .collection('todos')
+                .snapshots(),
+            builder: (_, snapshot) {
+              if (snapshot.hasError) return Text('Error = ${snapshot.error}');
+
+              if (snapshot.hasData) {
+                final docs = snapshot.data!.docs;
+                return ListView.builder(
+                  shrinkWrap: isSuggestions,
+                  scrollDirection: Axis.vertical,
+                  itemCount: docs.length,
+                  itemBuilder: (_, i) {
+                    final todo = docs[i].data();
+                    return Expanded(
+                        child: Task(
+                      isSuggestions: isSuggestions,
+                      isMain: isMain,
+                      isPlanned: isPlanned,
+                      todo: todo,
+                    ));
+                  },
+                );
+              }
+              ;
+              return Center(child: CircularProgressIndicator());
+            }));
   }
 }

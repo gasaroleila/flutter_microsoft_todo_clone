@@ -30,7 +30,6 @@ class AppSideBar extends StatelessWidget {
                 icon: const Icon(Icons.menu, color: Colors.white, size: 32),
                 onPressed: () => {
                   data.changeSideBarDisplay(),
-                  FirestoreMethods().addTodo(todo)
                 },
               ),
             ),

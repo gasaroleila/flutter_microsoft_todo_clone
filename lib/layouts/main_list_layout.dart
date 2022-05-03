@@ -26,6 +26,9 @@ class MainListLayout extends StatefulWidget {
 }
 
 class _MainListLayoutState extends State<MainListLayout> {
+
+  //  final myController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     double statusBar = MediaQuery.of(context).padding.top;
@@ -65,7 +68,7 @@ class _MainListLayoutState extends State<MainListLayout> {
                           todos: widget.data,
                           isMain: true,
                         ),
-                        const AddTask()
+                          AddTask()
                       ],
                     ),
                   ],
