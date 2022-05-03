@@ -18,15 +18,22 @@ class TodoDetails extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(15, statusBar + 12, 14.5, 0),
                 child: Column(
                   children: [
-                    Container(
-                      alignment: Alignment.topRight,
-                      child: IconButton(
-                        icon: const Icon(
-                          Icons.close,
-                          size: 25,
-                          color: Colors.white,
+                    MouseRegion(
+                      onEnter: (event) {
+                        print('enter');
+                      },
+                      onExit: (event) => print(event),
+                      cursor: SystemMouseCursors.click,
+                      child: Container(
+                        alignment: Alignment.topRight,
+                        child: IconButton(
+                          icon: const Icon(
+                            Icons.close,
+                            size: 25,
+                            color: Colors.white,
+                          ),
+                          onPressed: () => {Navigator.pop(context)},
                         ),
-                        onPressed: () => {},
                       ),
                     ),
                     Padding(
@@ -290,7 +297,7 @@ class TodoDetails extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 14.0),
                       child: Container(
-                        height: MediaQuery.of(context).size.height * 0.08,
+                        height: MediaQuery.of(context).size.height * 0.13,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(3),
                           color: Palette.secBlack,
@@ -298,13 +305,48 @@ class TodoDetails extends StatelessWidget {
                         child: Padding(
                             padding: const EdgeInsets.fromLTRB(19.0, 5, 3, 5),
                             child: TextFormField(
-                              minLines: 10,
+                              // minLines: 6,
                               // expands: true,
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
-                              decoration:
-                                  InputDecoration(border: InputBorder.none),
+                              decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: 'Add note',
+                                  hintStyle: TextStyle(color: Colors.white)),
+                              // strutStyle: const StrutStyle(height: 20),
                             )),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 27),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                            border: Border(
+                                top:
+                                    BorderSide(width: 1, color: Colors.white))),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 6.0),
+                          child: Row(children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal:
+                                      MediaQuery.of(context).size.width *
+                                          0.195),
+                              child: const Text(
+                                'Created 5 hours ago',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 18),
+                              ),
+                            ),
+                            IconButton(
+                              icon: const Icon(
+                                Ionicons.md_trash,
+                                color: Colors.white,
+                              ),
+                              onPressed: () {},
+                            )
+                          ]),
+                        ),
                       ),
                     )
                   ],

@@ -22,9 +22,10 @@ class Task extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context,
-            PageTransition(
-                child: TodoDetails(), type: PageTransitionType.rightToLeft));
+          context,
+          PageTransition(
+              child: TodoDetails(), type: PageTransitionType.rightToLeft),
+        );
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 4),
