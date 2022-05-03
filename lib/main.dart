@@ -1,14 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_microsoft_todo_clone/models/sidebar_model.dart';
 import 'package:flutter_microsoft_todo_clone/screens/assigned.dart';
 import 'package:flutter_microsoft_todo_clone/screens/important.dart';
+import 'package:flutter_microsoft_todo_clone/screens/login_screen.dart';
 import 'package:flutter_microsoft_todo_clone/screens/my_day.dart';
 import 'package:flutter_microsoft_todo_clone/screens/planned.dart';
 import 'package:flutter_microsoft_todo_clone/screens/assigned.dart';
 import 'package:flutter_microsoft_todo_clone/screens/tasks.dart';
+import 'package:flutter_microsoft_todo_clone/widgets/todo_details.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -26,13 +31,15 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: '/',
+        initialRoute: '/signIn',
         routes: {
-          '/': (context) => const MyDayScreen(),
+          '/signIn': (context) => LoginScreen(),
+          '/': (context) =>  MyDayScreen(),
           '/important': (context) => const ImportantScreen(),
           '/planned': (context) => const PlannedScreen(),
           '/assigned': (context) => const AssignedScreen(),
-          '/tasks': (context) => const TasksScreen()
+          '/tasks': (context) => const TasksScreen(),
+          '/todo-details': (context) => const TodoDetails()
         },
       ),
     );
