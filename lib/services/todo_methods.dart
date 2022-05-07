@@ -20,6 +20,21 @@ class TodoMethods {
     }
   }
 
+  dynamic retrieveSingleTodo(String id) async {
+    try {
+      var todo = _firestore
+          .collection('users')
+          .doc(_auth.currentUser!.uid)
+          .collection('todos')
+          .doc(id)
+          .snapshots();
+
+      return await todo.toList();
+    } catch (e) {
+      print(e);
+    }
+  }
+
   void addTodo(ToDo todo) async {
     try {
       print("there");

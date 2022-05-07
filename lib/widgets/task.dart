@@ -21,10 +21,12 @@ class Task extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        print(todo);
         Navigator.push(
           context,
           PageTransition(
-              child: TodoDetails(), type: PageTransitionType.rightToLeft),
+              child: TodoDetails(id: todo['id']),
+              type: PageTransitionType.rightToLeft),
         );
       },
       child: Container(

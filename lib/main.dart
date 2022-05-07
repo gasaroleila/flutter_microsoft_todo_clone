@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
           '/planned': (context) => const PlannedScreen(),
           '/assigned': (context) => const AssignedScreen(),
           '/tasks': (context) => const TasksScreen(),
-          '/todo-details': (context) => const TodoDetails()
+          // '/todo-details': (context) =>  TodoDetails()
         },
       ),
     );
